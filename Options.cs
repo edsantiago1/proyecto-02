@@ -2,6 +2,10 @@ using System.Globalization;
 using System.Security.AccessControl;
 
 namespace Proyecto2;
+
+//Clase OpccionesClass.
+//En esta clase estan todas las opciones utilizadas segun cada opcion solictada para el usuario.}
+//Todos estos metodos utilizan como base los 3 metodos fundamentales que se encuentran en la clase BankAccount
 class OpcionesClass
     {
         InternalProcesses internalProcesses = new InternalProcesses();

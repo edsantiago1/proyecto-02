@@ -1,12 +1,6 @@
 ﻿using Menu;
-
-/* public string Owner { get; set; }   
-    public string Type { get; set; }
-    public string phoneNumber { get; set; }
-    public string id {get; set; }
-    public decimal balance { get; set; }
-    public string addres { get; set; }
- */
+//Clase Program. Funcion Main
+//En esta clase unicamente llamo a los metodos principales del codigo y creo un while con la variable menuValidate para poder cerrar el programa
 class Program{
 
         public static void Main(string[] args)  {
