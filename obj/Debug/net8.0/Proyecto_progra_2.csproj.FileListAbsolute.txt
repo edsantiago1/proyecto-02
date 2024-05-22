@@ -12,3 +12,4 @@ C:\Users\PC-JUANCHO\Desktop\Tareas\Primer semestre\Pensamiento computacional pra
 C:\Users\PC-JUANCHO\Desktop\Tareas\Primer semestre\Pensamiento computacional practica\Proyecto_progra_2\obj\Debug\net8.0\Proyecto_progra_2.pdb
 C:\Users\PC-JUANCHO\Desktop\Tareas\Primer semestre\Pensamiento computacional practica\Proyecto_progra_2\obj\Debug\net8.0\Proyecto_progra_2.genruntimeconfig.cache
 C:\Users\PC-JUANCHO\Desktop\Tareas\Primer semestre\Pensamiento computacional practica\Proyecto_progra_2\obj\Debug\net8.0\ref\Proyecto_progra_2.dll
+C:\Users\PC-JUANCHO\Desktop\Tareas\Primer semestre\Pensamiento computacional practica\Proyecto_progra_2\obj\Debug\net8.0\Proyecto_progra_2.sourcelink.json
