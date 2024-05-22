@@ -100,13 +100,14 @@ class OpcionesClass
         }
 
         public string[] thirdPartyAccount(string[] accountData,string[,] thirdAccounts, int thirdAccountSeeds){
+            Console.WriteLine("Solicite los siguientes datos al usuario que desea agregar");
+            Console.ReadKey();
             thirdAccounts[thirdAccountSeeds-1,0] = thirdAccountSeeds.ToString();
             thirdAccounts[thirdAccountSeeds-1,1] = internalProcesses.AccountNameValidation();
             thirdAccounts[thirdAccountSeeds-1,2] = internalProcesses.ThirdPartyAccountNumber();
             thirdAccounts[thirdAccountSeeds-1,3] = internalProcesses.NameBanksValidation();
             thirdAccounts[thirdAccountSeeds-1,5] = internalProcesses.BadgesValidation();
             thirdAccounts[thirdAccountSeeds-1,4] = internalProcesses.AmountTransfers(thirdAccounts[thirdAccountSeeds-1,5]);
-            Console.WriteLine(thirdAccounts[0,4]);
             accountData[7] = thirdAccounts[thirdAccountSeeds-1,4];
             BankAccount bankAccount = new BankAccount(accountData);
             bankAccount.AccountDebit(Convert.ToDecimal(accountData[7]));
@@ -116,19 +117,17 @@ class OpcionesClass
         }
 
                 public string[] thirdAccountTransfers(string[] accountData,string[,] thirdAccounts){
-            for(int i = 0; i < thirdAccounts.GetLength(1); i++){
-                for(int j = 0; j < thirdAccounts.GetLength(0); j++){
-                    if(thirdAccounts[j,i] == ""){
-                        continue;
+            for(int i = 0; i < thirdAccounts.GetLength(0); i++){
+//                Console.WriteLine(thirdAccounts.GetLength(0));
+                for(int j = 0; j < thirdAccounts.GetLength(1); j++){
+//                    Console.WriteLine(thirdAccounts.GetLength(1));
+                    if(thirdAccounts[i,j] == "" || thirdAccounts[i, j] == null){
+                        break;
                     } else{
-                    Console.Write($"{thirdAccounts[j,i]}");
-                    Console.Write("\t");
+                    Console.Write($"{thirdAccounts[i,j]}");
+                    Console.Write("\n");
                     }
-                if(thirdAccounts[j, i] != string.Empty){
-                Console.WriteLine("");
                 }
-                }
-                
             }
             while(true){
             Console.WriteLine("Seleccion la cuenta a la que desea transferir indicando el numero de indice");
@@ -142,8 +141,13 @@ class OpcionesClass
                 }
             accountData[7] = internalProcesses.AmountTransfers("Quetzales");
             BankAccount bankAccount = new BankAccount(accountData);
-            bankAccount.AccountDebit(Convert.ToDecimal(accountData[7]));
-            Console.WriteLine($"Saldo de cuenta: {bankAccount.balance}");
+            try{
+                bankAccount.AccountDebit(Convert.ToDecimal(accountData[7]));
+                Console.WriteLine($"Saldo de cuenta: {bankAccount.balance}");
+            }
+            catch(Exception ex){
+                Console.WriteLine(ex.ToString());
+            }
             accountData[6] = bankAccount.balance.ToString();
             return accountData;
         }
@@ -152,7 +156,7 @@ class OpcionesClass
             string proveedor;
             while(true){
                 for(int i = 0; i < proveedores.Length; i++){
-                    Console.WriteLine($"{i}.{proveedores[i]}");
+                    Console.WriteLine($"{i+1}.{proveedores[i]}");
                 }
                 Console.WriteLine("Indique al proveedor al que desea pagar, seleccionando el numero de opcion");
                 proveedor = Console.ReadLine()?? string.Empty;
@@ -163,9 +167,7 @@ class OpcionesClass
             else{
                 int.TryParse(proveedor, out int proveedorInt);
                 if(proveedorInt >0 && proveedorInt < 5){
-                proveedor = internalProcesses.switchCase4(proveedorInt);
-
-
+                proveedor = internalProcesses.switchCase4(proveedorInt, proveedores);
                 break;
                 }else{
                     Console.WriteLine("El valor ingresado no es una opcion valida");
@@ -173,6 +175,16 @@ class OpcionesClass
                 }
                 }
             }
+            accountData[7] = internalProcesses.AmountTransfers("Quetzales");
+            BankAccount bankAccount = new BankAccount(accountData);
+            try{
+                bankAccount.AccountDebit(Convert.ToDecimal(accountData[7]));
+                Console.WriteLine($"Saldo de cuenta: {bankAccount.balance}");
+            }
+            catch(Exception ex){
+                Console.WriteLine(ex.ToString());
+            }
+            accountData[6] = bankAccount.balance.ToString();
             return accountData;
         }
         public void printLogs(List<string> Logs)
@@ -180,7 +192,7 @@ class OpcionesClass
             Console.WriteLine("\n\nLogs: ");
             for (int i = 0; i < Logs.Count; i++)
             {
-                Console.WriteLine($"{i}.{Logs[i]}");
+                Console.WriteLine($"{i+1}.{Logs[i]}");
             }
         }
 
